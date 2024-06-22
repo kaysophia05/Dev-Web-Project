@@ -1,0 +1,180 @@
+/*Seletor univesal */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box; /*Medida passa a ser a partir da borda, nela os preenchimentos internos são respeitados*/
+}
+
+:root{
+  --text-color: white; 
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255,255,255,0.5);
+  --surface-color:rgba(255,255,255,0.1);
+  --surface-color-hover:rgba(255,255,255,0.05);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(assets/moon-stars.svg);
+  }
+  
+.light{
+  --text-color: black; 
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0,0,0,0.5);
+  --surface-color:rgba(0,0,0,0.05);
+  --surface-color-hover:rgba(255,255,255,0.02);
+  --highlight-color: rgba(0,0,0,0.1);
+  --switch-bg-url: url(assets/sun.svg);
+}
+
+body {
+  background:var(--bg-url) no-repeat top center/cover; /*ATALHO, Atribuições em uma mesma linha*/
+  /* background-image: url(./assets/bg-mobile.jpg); */
+  /*background-repeat: no-repeat; /*Inibe as repetições da imagem*/
+  /* background-position: top center; /*eixo x e y*/
+  /*background-size: cover; /*renderiza conforme o tamanho da tela*/
+}
+
+/*Alterando as fontes de todo o body por um seletor universal*/
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+/*Estilizando o container principal*/
+#container {
+  width: 360px;
+  margin: 56px auto 0px; /*teoria da aplicação de espaçamento no sentido horário*/
+  padding: 0 24px;
+}
+/*Seletor da caixa principal do Perfil*/
+#profile {
+  text-align: center; /*Alinhando os conteudos de dentro caixa perfil no centro */
+  padding: 24px;
+}
+
+/*Seletor da imagem contida dentro da caixa perfil*/
+#profile img {
+  width: 112px; /*Largura da imagem*/
+  margin-bottom: 8px; /*Margem da base*/
+  /*margin: auto; Porque não está alinhando ao meio? => se um elemento éinline, n é possivel colocar auto como atribuição do margin*/
+}
+
+/*Seletor do paragrafo contido dentro da caixa perfil*/
+#profile p {
+  font-weight: 500; /*Peso da fonte*/
+  line-height: 24px; /*Altura da linha*/
+  margin-top: 8px; /*Margem no topo do paragrafo*/
+}
+
+#switch{
+  position: relative;
+  width: 64px;
+  /*Alinhando o switch ao centro da caixa com 4px de margin em cim e em baixo*/
+  margin: 4px auto;
+}
+
+#switch button{
+  width: 32px;
+  height: 32px;
+  background: #fff  var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute; /*Esse absoluto vai ser relativo ao elemento switch*/
+  left: 0;
+  z-index: 1; /*Subindo um andar*/
+  /*Alinhando o botão dentro do track*/
+  /*Alinhando posicionamento absoluto*/
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.light #switch button{
+  right: 0;
+  left: initial;
+}
+
+#switch span{
+  display: block;
+  width: 64px;
+  height: 24px;
+  border-radius: 9999px;
+  border: 1px solid var(--stroke-color);
+  background: var(--surface-color);
+  backdrop-filter: blur(4px);
+}
+
+
+/*SELETOR DOS LINKS*/
+ul{
+  list-style: none;
+  display: flex; 
+  flex-direction: column; /*Formato de  organização do sitens em colunas*/
+  gap: 16px; /*Espaçamento entre os itens*/
+  padding: 24px 0;
+}
+
+ul li a{ /*Li é block*/
+  display: flex; /*Comportamento de conteudo flexivel dentro da caixa*/
+  align-items: center; /*centraliza o conteudo no eixo X da caixa*/
+  justify-content: center /*centraliza o conteudo no eixo Y da caixa*/;
+  padding: 16px 24px; /* 16px no top e bottom | 24px no left e right*/
+ 
+  background: var(--surface-color); /*Cor de fundo do botão (Estudar (RGBA)*/
+  border: 1px solid var(--stroke-color); /*Tamanho, peso e cor das bordas do botões*/
+  border-radius: 8px; 
+  
+  backdrop-filter: blur(4px); /*Efeito de Plano de fundo do botões*/
+  -webkit-backdrop-filter: blur(4px); /*Caso o efeito de plano de fundo não funcione em X navegadores*/
+
+  text-decoration: none; /*Retirar as linhas inforiores dos conteúdos*/
+  font-weight: 500; 
+
+  transition: background 02s /*Transição ao passar o mouse pelo botão*/
+}
+
+/*Pseudo-=selector */
+ul li a:hover{
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+#social-links{
+  display: flex;
+  padding:24px 24px;
+  font-size: 24px;
+  justify-content: center;
+
+}
+
+#social-links a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover{
+  background: var(--highlight-color);
+  padding: 16px;
+}
+
+footer{
+  padding: 24px 0;
+  text-align: center;
+  font-size: 16px;
+
+}
+
+#teste{
+  border: 1px solid yellow;
+  display: flex;
+  justify-content: center;
+}
+
+/*  display: flex; /*Comportamento de conteudo flexivel dentro da caixa*/
+/*  align-items: center; /*centraliza o conteudo no eixo X da caixa         OK*/       
+/*  justify-content: center /*centraliza o conteudo no eixo Y da caixa      OK*/
+/*  background: rgba(255, 255, 255, 0.1);*/
+/*  border: 1px solid rgba(255, 255, 255, 0.5);*/
