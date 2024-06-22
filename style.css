@@ -26,7 +26,9 @@ box-sizing: border-box; /*Medida passa a ser a partir da borda, nela os preenchi
 }
 
 body {
-  background:var(--bg-url) no-repeat top center/cover; /*ATALHO, Atribuições em uma mesma linha*/
+  background:var(--bg-url) no-repeat top center/cover; 
+  height: 100vh;
+  /*ATALHO, Atribuições em uma mesma linha*/
   /* background-image: url(./assets/bg-mobile.jpg); */
   /*background-repeat: no-repeat; /*Inibe as repetições da imagem*/
   /* background-position: top center; /*eixo x e y*/
@@ -172,6 +174,18 @@ footer{
   border: 1px solid yellow;
   display: flex;
   justify-content: center;
+}
+
+/*MEDIA QUERIES*/
+@media (min-width: 700px){
+  :root{
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+
+  .light{
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+   
+  }
 }
 
 /*  display: flex; /*Comportamento de conteudo flexivel dentro da caixa*/
