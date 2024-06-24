@@ -88,11 +88,15 @@ body * {
   /*Alinhando posicionamento absoluto*/
   transform: translateY(-50%);
   top: 50%;
+  animation: slide-back 0.2s;
 }
 
 .light #switch button{
-  right: 0;
-  left: initial;
+ animation: slide-in 0.2s forwards;
+ /*forwards: Mantem as regras inicias depois de executar a animação*/
+}
+#switch button:hover{
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span{
@@ -169,14 +173,7 @@ footer{
   font-size: 16px;
 
 }
-
-#teste{
-  border: 1px solid yellow;
-  display: flex;
-  justify-content: center;
-}
-
-/*MEDIA QUERIES*/
+/*Media Queries*/
 @media (min-width: 700px){
   :root{
     --bg-url: url(./assets/bg-desktop.jpg);
@@ -185,6 +182,26 @@ footer{
   .light{
     --bg-url: url(./assets/bg-desktop-light.jpg);
    
+  }
+}
+
+/*Animation*/
+@keyframes slide-in{
+  from{
+    left: 0;;
+  }
+  to{
+    left: 50%;;
+  }
+  /*Movendo o elemento de 0 a 50%*/
+}
+
+@keyframes slide-back{
+  from{
+    left: 50%;
+  }
+  to{
+    left: 0;
   }
 }
 
